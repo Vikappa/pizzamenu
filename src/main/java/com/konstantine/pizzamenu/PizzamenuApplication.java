@@ -47,9 +47,14 @@ public class PizzamenuApplication {
 
 	@Value("${ordine.costoCoperto}")
 	private double costoCoperto;
+	@Autowired
+	private Menu menu;
+	@Autowired
+	ArrayList<Tavolo> tavoli;
+
 
 	@Bean
-	public CommandLineRunner commandLineRunner(@Autowired Menu menu, @Autowired ArrayList<Tavolo> tavoli) {
+	public CommandLineRunner commandLineRunner() {
 		return args -> {
 			try (Scanner scanner = new Scanner(System.in)) {
 				boolean continua = true;
