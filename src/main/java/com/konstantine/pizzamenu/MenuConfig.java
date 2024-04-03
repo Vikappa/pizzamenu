@@ -12,9 +12,6 @@ import java.util.ArrayList;
 @PropertySource("application.properties")
 public class MenuConfig {
 
-    @Value("${ordine.costoCoperto}")
-    private double costoCoperto;
-
     @Bean
     public Topping pomodoro() {
         return new Topping("pomodoro", 0.69, 40);

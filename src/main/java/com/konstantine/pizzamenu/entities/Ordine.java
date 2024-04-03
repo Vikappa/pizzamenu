@@ -29,6 +29,7 @@ public class Ordine {
     private LocalDate oraAquisizione;
     private int coperti;
 
+    @Setter
     private ArrayList<Alimento> ordinazioni;
 
     public Ordine() {
@@ -61,9 +62,5 @@ public class Ordine {
             this.ordinazioni = new ArrayList<Alimento>();
         }
         return this.ordinazioni;
-    }
-
-    public void setOrdinazioni(ArrayList<Alimento> ordinazioni) {
-        this.ordinazioni = ordinazioni;
     }
 }
