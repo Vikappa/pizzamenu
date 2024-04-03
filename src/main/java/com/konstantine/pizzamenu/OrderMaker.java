@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-@Component // Se non mettiamo questa annotazione il runner non verrà avviato
+@Component
 public class OrderMaker implements CommandLineRunner {
 
     @Autowired
@@ -49,28 +49,28 @@ public class OrderMaker implements CommandLineRunner {
         switch (s) {
             case 1:
                 ordered = pizzaMargherita;
-                break;
+                return ordered;
             case 2:
                 ordered = pizzaMargheritaGrande;
-                break;
+                return ordered;
             case 3:
                 ordered = pizzaHawaii;
-                break;
+                return ordered;
             case 4:
                 ordered = pizzaSalame;
-                break;
+                return ordered;
             case 5:
                 ordered = pizzaDiavola;
-                break;
+                return ordered;
             case 6:
                 ordered = limonata03;
-                break;
+                return ordered;
             case 7:
                 ordered = acqua;
-                break;
+                return ordered;
             case 8:
                 ordered = vino;
-                break;
+                return ordered;
             default:
                 System.out.println("Selezione non valida.");
                 break;
