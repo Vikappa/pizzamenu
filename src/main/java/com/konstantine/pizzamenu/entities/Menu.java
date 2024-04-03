@@ -18,4 +18,13 @@ public class Menu {
         menu.forEach(alimento -> System.out.println(alimento));
     }
 
+    public void stampaMenuPerOrdinazioni() {
+        int riga = 1;
+        for (Alimento alimento : menu) {
+            if (!(alimento instanceof Topping)) {
+                System.out.println(riga + ". " + alimento);
+                riga++;
+            }
+        }
+    }
 }

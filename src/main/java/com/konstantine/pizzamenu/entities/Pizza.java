@@ -11,6 +11,10 @@ public class Pizza extends Alimento {
     private List<Topping> ingredienti;
     private Size size;
 
+    public Pizza() {
+        super();
+    }
+
     public enum Size {
         GRANDE, MEDIO, PICCOLA
     }

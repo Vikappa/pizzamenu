@@ -1,16 +1,19 @@
 package com.konstantine.pizzamenu;
-import com.konstantine.pizzamenu.entities.Alimento;
-import com.konstantine.pizzamenu.entities.Drink;
-import com.konstantine.pizzamenu.entities.Menu;
-import com.konstantine.pizzamenu.entities.Pizza;
-import com.konstantine.pizzamenu.entities.Topping;
+import com.konstantine.pizzamenu.entities.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.Scope;
 
 import java.util.ArrayList;
 
 @Configuration
+@PropertySource("application.properties")
 public class MenuConfig {
+
+    @Value("${ordine.costoCoperto}")
+    private double costoCoperto;
 
     @Bean
     public Topping pomodoro() {
@@ -68,7 +71,7 @@ public class MenuConfig {
         ArrayList<Topping> ingredientiMargherita = new ArrayList<>();
         ingredientiMargherita.add(pomodoro());
         ingredientiMargherita.add(mozzarella());
-        Pizza pizza = new Pizza("Margherita grande", 8.99, 2200, ingredientiMargherita, Pizza.Size.MEDIO);
+        Pizza pizza = new Pizza("Margherita grande", 8.99, 2200, ingredientiMargherita, Pizza.Size.GRANDE);
         return pizza;
     }
 
@@ -78,7 +81,7 @@ public class MenuConfig {
         ingredientiHawaii.add(pomodoro());
         ingredientiHawaii.add(mozzarella());
         ingredientiHawaii.add(ananas());
-        Pizza pizza = new Pizza("Hawaii media", 6.49, 1024, ingredientiHawaii, Pizza.Size.MEDIO);
+        Pizza pizza = new Pizza("Hawaii", 6.49, 1024, ingredientiHawaii, Pizza.Size.MEDIO);
         return pizza;
     }
 
@@ -118,6 +121,27 @@ public class MenuConfig {
         return new Drink("Vino 0.75 13%", 7.49, 607);
     }
 
+    @Bean
+    Tavolo tavolo1() {return new Tavolo(1,2, Tavolo.statoTavolo.LIBERO);}
+    @Bean
+    Tavolo tavolo2() {return new Tavolo(2,4, Tavolo.statoTavolo.LIBERO);}
+    @Bean
+    Tavolo tavolo3() {return new Tavolo(3,5, Tavolo.statoTavolo.LIBERO);}
+    @Bean
+    Tavolo tavolo4() {return new Tavolo(4,3, Tavolo.statoTavolo.LIBERO);}
+    @Bean
+    Tavolo tavolo5() {return new Tavolo(5,2, Tavolo.statoTavolo.OCCUPATO);}
+
+    @Bean
+    public ArrayList<Tavolo> tavoli() {
+        ArrayList<Tavolo> tavoli = new ArrayList<>();
+        tavoli.add(tavolo1());
+        tavoli.add(tavolo2());
+        tavoli.add(tavolo3());
+        tavoli.add(tavolo4());
+        tavoli.add(tavolo5());
+        return tavoli;
+    }
 
     @Bean
     public Menu menu() {
