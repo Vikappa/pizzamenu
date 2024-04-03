@@ -1,10 +1,14 @@
 package com.konstantine.pizzamenu.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+@Getter
+@Setter
+@AllArgsConstructor
 
 public class Ordine {
 
@@ -19,20 +23,10 @@ public class Ordine {
         IN_CORSO, PRONTO, SERVITO;
     }
 
-    @Setter
-    @Getter
     private int idOrdine;
-    @Setter
-    @Getter
     private StatoOrdine statoOrdine;
-    @Getter
-    @Setter
     private Tavolo tavoloOrdine;
-    @Setter
-    @Getter
     private LocalDate oraAquisizione;
-    @Setter
-    @Getter
     private int coperti;
 
     private ArrayList<Alimento> ordinazioni;
@@ -54,8 +48,8 @@ public class Ordine {
     }
 
     public double calcolaConto(double costoCoperto){
-        int conto = 0;
-        for (Alimento alimento : getTavoloOrdine().getOrdinazioni()) {
+        double conto = 0;
+        for (Alimento alimento : this.getOrdinazioni()) {
             conto += alimento.getPrezzo();
         }
         conto+= costoCoperto*this.tavoloOrdine.getPosti();

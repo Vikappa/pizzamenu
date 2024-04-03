@@ -151,6 +151,9 @@ public class MenuConfig {
         menu.addAlimento(pizzaHawaii());
         menu.addAlimento(pizzaSalame());
         menu.addAlimento(pizzaDiavola());
+        menu.addAlimento(limonata03());
+        menu.addAlimento(acqua());
+        menu.addAlimento(vino());
         menu.addAlimento(pomodoro());
         menu.addAlimento(mozzarella());
         menu.addAlimento(cipolla());
@@ -159,9 +162,6 @@ public class MenuConfig {
         menu.addAlimento(salame());
         menu.addAlimento(ventricinaPiccante());
         menu.addAlimento(extraMozzarella());
-        menu.addAlimento(limonata03());
-        menu.addAlimento(acqua());
-        menu.addAlimento(vino());
         return menu;
     }
 }

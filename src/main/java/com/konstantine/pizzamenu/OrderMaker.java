@@ -12,74 +12,12 @@ import java.util.Scanner;
 @Component
 public class OrderMaker implements CommandLineRunner {
 
-    @Autowired
-    private Pizza pizzaMargherita;
-
-    @Autowired
-    private Pizza pizzaMargheritaGrande;
-
-    @Autowired
-    private Pizza pizzaHawaii;
-
-    @Autowired
-    private Pizza pizzaSalame;
-
-    @Autowired
-    private Pizza pizzaDiavola;
-
-    @Autowired
-    private Drink limonata03;
-
-    @Autowired
-    private Drink acqua;
-
-    @Autowired
-    private Drink vino;
-
     @Value("${ordine.costoCoperto}")
     private double costoCoperto;
     @Autowired
     private Menu menu;
     @Autowired
     ArrayList<Tavolo> tavoli;
-
-    private Alimento parsePizzaOrder(int s) {
-        Alimento ordered = null;
-
-        switch (s) {
-            case 1:
-                ordered = pizzaMargherita;
-                return ordered;
-            case 2:
-                ordered = pizzaMargheritaGrande;
-                return ordered;
-            case 3:
-                ordered = pizzaHawaii;
-                return ordered;
-            case 4:
-                ordered = pizzaSalame;
-                return ordered;
-            case 5:
-                ordered = pizzaDiavola;
-                return ordered;
-            case 6:
-                ordered = limonata03;
-                return ordered;
-            case 7:
-                ordered = acqua;
-                return ordered;
-            case 8:
-                ordered = vino;
-                return ordered;
-            default:
-                System.out.println("Selezione non valida.");
-                break;
-        }
-
-        System.out.println("Hai scelto: " + ordered.toString());
-        System.out.println();
-        return ordered;
-    }
 
     @Override
     public void run(String... args) throws Exception {
@@ -132,7 +70,7 @@ public class OrderMaker implements CommandLineRunner {
                                     if (sceltaAlimento == 0) {
                                         aggiungiAlimenti = false;
                                     } else {
-                                        Alimento alimentoScelto = parsePizzaOrder(sceltaAlimento);
+                                        Alimento alimentoScelto = menu.getAlimenti(sceltaAlimento);
                                         if (alimentoScelto != null) {
                                             ordine.addAlimento(alimentoScelto);
                                             System.out.println("Elemento aggiunto all'ordine.");
