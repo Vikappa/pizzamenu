@@ -30,11 +30,9 @@ public class Pizza extends Alimento {
         return this.getClass().getSimpleName() + nome + " Taglia: " + size + " calorie " + calorie + " €" + prezzo;
     }
 
-
     public String getSize() {
         return this.size.toString();
     }
-
 
     public void addTopping(Topping topping) {
         this.ingredienti.add(topping);

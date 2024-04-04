@@ -95,7 +95,6 @@ public class OrderMaker implements CommandLineRunner {
                         }
 
                     }
-
-            };
+            }
         }
     }
