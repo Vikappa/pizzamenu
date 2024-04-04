@@ -2,6 +2,7 @@ package com.konstantine.pizzamenu;
 import com.konstantine.pizzamenu.entities.Menu;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
@@ -15,6 +16,14 @@ class PizzamenuApplicationTests {
 
 	@Autowired
 	private Menu menu;
+
+	@Value("${ordine.costoCoperto}")
+	private double costoCoperto;
+
+	@Test
+	public void checkConfigCostoCoperto() {
+        assertEquals(costoCoperto, 1.5);
+    }
 
 	@Test
 	public void testStringaAlimenti() {
