@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-@Component
+//@Component
 public class OrderMaker implements CommandLineRunner {
 
     @Value("${ordine.costoCoperto}")
