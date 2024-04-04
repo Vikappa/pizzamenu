@@ -4,6 +4,8 @@ import com.konstantine.pizzamenu.entities.Menu;
 import com.konstantine.pizzamenu.entities.Ordine;
 import com.konstantine.pizzamenu.entities.Tavolo;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -107,6 +109,14 @@ class PizzamenuApplicationTests {
 		assertEquals(costoOrdine, ordine.calcolaConto(costoCoperto));
 	}
 
-
+	@ParameterizedTest
+	@CsvSource({
+			"1.5, true",
+			"2.0, false",
+			"0.0, false"
+	})
+	public void checkConfigCostoCoperto(double costo, boolean expected) {
+		assertEquals(expected, costoCoperto == costo);
+	}
 
 }
