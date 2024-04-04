@@ -31,4 +31,8 @@ public class Menu {
     public Alimento getAlimenti(int sceltaAlimento) {
         return menu.get(sceltaAlimento - 1);
     }
+
+    public ArrayList<Alimento> getMenuArrayList() {
+        return this.menu;
+    }
 }
