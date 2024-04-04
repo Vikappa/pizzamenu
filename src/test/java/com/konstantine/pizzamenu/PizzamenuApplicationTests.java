@@ -1,5 +1,8 @@
 package com.konstantine.pizzamenu;
+import com.konstantine.pizzamenu.entities.Alimento;
 import com.konstantine.pizzamenu.entities.Menu;
+import com.konstantine.pizzamenu.entities.Ordine;
+import com.konstantine.pizzamenu.entities.Tavolo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -16,6 +20,9 @@ class PizzamenuApplicationTests {
 
 	@Autowired
 	private Menu menu;
+
+	@Autowired
+	ArrayList<Tavolo> tavoli;
 
 	@Value("${ordine.costoCoperto}")
 	private double costoCoperto;
@@ -81,6 +88,24 @@ class PizzamenuApplicationTests {
 
 		}
 
+
+    @Test
+	public void testCalcolaOrdine() {
+		Ordine ordine = new Ordine();
+
+		ordine.addAlimento(menu.getAlimenti(1));
+		ordine.addAlimento(menu.getAlimenti(2));
+		ordine.addAlimento(menu.getAlimenti(3));
+		ordine.setTavoloOrdine(tavoli.get(0));
+
+		Alimento alimento1 = menu.getAlimenti(1);
+		Alimento alimento2 = menu.getAlimenti(2);
+		Alimento alimento3 = menu.getAlimenti(3);
+
+		double costoOrdine = (tavoli.get(0).getPosti() * costoCoperto) + (alimento1.getPrezzo() + alimento2.getPrezzo() + alimento3.getPrezzo());
+
+		assertEquals(costoOrdine, ordine.calcolaConto(costoCoperto));
+	}
 
 
 
